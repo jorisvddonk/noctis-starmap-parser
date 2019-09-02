@@ -24,6 +24,8 @@ export interface GuideEntry {
   text: string;
 }
 
+const DEFAULT_PRECISION = 0.00001;
+
 function isStar(star: any): star is Star {
   return (
     star.hasOwnProperty("x") &&
@@ -181,20 +183,32 @@ export class Noctis {
     }
   };
 
-  getStarByID = starid => {
+  getStarByID = (starid: number, precision?: number) => {
     if (!isNumber(starid)) {
-      starid = this.getIDForStar(starid);
+      let starid_ = this.getIDForStar(starid);
+      if (starid_ !== undefined) {
+        starid = starid_;
+      }
     }
     return this.stars.find(function(entry) {
       const diff = entry.object_id - starid;
-      return diff > -0.00001 && diff < 0.00001;
+      return (
+        diff > (precision === undefined ? -DEFAULT_PRECISION : -precision) &&
+        diff < (precision === undefined ? DEFAULT_PRECISION : precision)
+      );
     });
   };
 
-  private getGuideEntriesById = id => {
+  private getGuideEntriesById = (id: number, precision?: number) => {
+    if (precision === undefined) {
+      precision = DEFAULT_PRECISION;
+    }
     return this.guide_data.filter(function(entry) {
       const diff = entry.object_id - id;
-      return diff > -0.00001 && diff < 0.00001;
+      return (
+        diff > (precision === undefined ? -DEFAULT_PRECISION : -precision) &&
+        diff < (precision === undefined ? DEFAULT_PRECISION : precision)
+      );
     });
   };
 
