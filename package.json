@@ -1,0 +1,25 @@
+{
+  "name": "noctis-starmap",
+  "version": "1.0.0",
+  "description": "Noctis Starmap(2) parser and utility library",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "keywords": [
+    "noctis"
+  ],
+  "author": "Joris van de Donk <jorisvddonk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "repository": {
+    "url": "https://github.com/jorisvddonk/noctis-starmap.git"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.3",
+    "typescript": "^3.6.2"
+  }
+}
