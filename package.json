@@ -1,6 +1,6 @@
 {
   "name": "noctis-starmap",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Noctis Starmap(2) parser and utility library",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
