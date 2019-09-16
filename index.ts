@@ -219,12 +219,26 @@ export class Noctis {
     return this.getGuideEntriesById(starid);
   };
 
-  getGuideEntriesForPlanetByName = (planetName: string) => {
-    const planet = this.getPlanetByName(planetName);
-    if (planet) {
-      const starid = this.getIDForStarCoordinates(planet.x, planet.y, planet.z);
-      const planetid = planet._index + starid;
-      return this.getGuideEntriesById(planetid);
+  getGuideEntriesForPlanet = (objid: number | string) => {
+    if (!isNumber(objid)) {
+      const planet = this.getPlanetByName(objid);
+      if (planet) {
+        const starid = this.getIDForStarCoordinates(
+          planet.x,
+          planet.y,
+          planet.z
+        );
+        const planetid = planet._index + starid;
+        return this.getGuideEntriesById(planetid);
+      } else {
+        return [];
+      }
+    } else {
+      return this.getGuideEntriesById(objid);
     }
+  };
+
+  getGuideEntriesForPlanetByName = (planetName: string) => {
+    return this.getGuideEntriesForPlanet(planetName);
   };
 }
