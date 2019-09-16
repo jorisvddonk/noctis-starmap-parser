@@ -219,6 +219,35 @@ export class Noctis {
     return this.getGuideEntriesById(starid);
   };
 
+  getPlanetsForStar = (starid: number | string) => {
+    let starID: number | undefined;
+    if (!isNumber(starid)) {
+      const id = this.getIDForStar(starid);
+      if (id !== undefined) {
+        starID = id;
+      }
+    }
+    if (isNumber(starID)) {
+      const star = this.getStarByID(starID);
+      if (star) {
+        return this.planets.reduce(
+          (memo, planet) => {
+            if (
+              planet.x === star.x &&
+              planet.y === star.y &&
+              planet.z === star.z
+            ) {
+              memo.push(planet);
+            }
+            return memo;
+          },
+          [] as Planet[]
+        );
+      }
+    }
+    return [];
+  };
+
   getGuideEntriesForPlanet = (objid: number | string) => {
     if (!isNumber(objid)) {
       const planet = this.getPlanetByName(objid);
