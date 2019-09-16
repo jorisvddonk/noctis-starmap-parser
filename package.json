@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {},
   "repository": {
-    "url": "https://github.com/jorisvddonk/noctis-starmap.git"
+    "url": "https://github.com/jorisvddonk/noctis-starmap-parser.git"
   },
   "devDependencies": {
     "@types/node": "^12.7.3",
