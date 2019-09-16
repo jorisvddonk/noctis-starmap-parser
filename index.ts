@@ -221,7 +221,9 @@ export class Noctis {
 
   getPlanetsForStar = (starid: number | string) => {
     let starID: number | undefined;
-    if (!isNumber(starid)) {
+    if (isNumber(starid)) {
+      starID = starid;
+    } else {
       const id = this.getIDForStar(starid);
       if (id !== undefined) {
         starID = id;
