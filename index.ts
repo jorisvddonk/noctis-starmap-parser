@@ -199,7 +199,7 @@ export class Noctis {
     });
   };
 
-  private getGuideEntriesById = (id: number, precision?: number) => {
+  getGuideEntriesById = (id: number, precision?: number) => {
     if (precision === undefined) {
       precision = DEFAULT_PRECISION;
     }
